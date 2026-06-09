@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 def raspar_preco(url: str) -> float:
-  "Acessa uma URL, extrei o preço, faz a limpeza de dados e retorna float."
+  """Acessa uma URL, extrai o preço, faz a limpeza de dados e retorna float."""
   #Simulando o HTML que o 'requests' traria de um site real
   try:
     response = requests.get(url, timeout=5)
@@ -21,6 +21,6 @@ def raspar_preco(url: str) -> float:
     return float(preco_limpo)
   
   except requests.RequestException as e:
-    raise Exception(f"Erro de:{e}")
+    raise Exception(f"Erro de requisição: {e}")
   except ValueError as e:
-    raise Exception(f"Erro ao procurar o preço:{e}")
+    raise Exception(f"Erro ao procurar o preço: {e}")
